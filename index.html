@@ -45,8 +45,8 @@
  
  <!--post width options-->
  <meta name="if:250px" content="0"/>
- <meta name="if:400px" content="1"/>
- <meta name="if:500px" content="0"/>
+ <meta name="if:400px" content="0"/>
+ <meta name="if:500px" content="1"/>
  <link href='https://fonts.googleapis.com/css?family=Karla:400,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
  
@@ -425,17 +425,19 @@ ol.notes {
 
 .audiodata {
     background-color:{color:Light Accents};
-    font-size: 1.3rem;
     padding: 20px;
     max-height: 35px;
     {block:If250px} /* post widths */
-        width: 155px;
+        width: 135px;
+        font-size: 1rem;
     {/block:If250px}
     {block:If400px}
          width: 305px;
+         font-size: 1.3rem;
     {/block:If400px}
     {block:If500px}
         width: 385px;
+        font-size: 1.3rem;
     {/block:If500px}
     margin-top: 0px;
     margin-left: 75px;
@@ -527,9 +529,13 @@ ol.notes li:before {
  
 {block:Photoset}
     {block:IndexPage}
-        {block:If250px}{Photoset-250}{/block:If250px}
-        {block:If400px}{Photoset-400}{/block:If400px}
         {block:If500px}{Photoset-500}{/block:If500px}
+        {block:IfNot500px}
+            {block:If250px}{Photoset-250}{/block:If250px}
+            {block:IfNot250px}
+                {block:If400px}{Photoset-400}{/block:If400px}
+            {/block:IfNot250px}
+        {/block:IfNot500px}
     {/block:IndexPage}
     {block:PermalinkPage}{Photoset-500}{/block:PermalinkPage} 
     
