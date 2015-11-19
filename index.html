@@ -487,6 +487,27 @@ ol.notes li:before {
     content:none!important;
 }
 
+#x {
+    position: fixed;
+    color: {color:Text};
+    font-size:1.3rem;
+    padding:0.1rem;
+    border:1px solid {color:Text};
+    right:0;
+    bottom:0;
+    margin-bottom:0.2rem;
+    margin-right:0.2rem;
+}
+
+#x:hover {
+    border-color:{color:Link Hover};
+}
+
+#x a:hover {
+    border-bottom:none!important;
+    cursor:crosshair;
+}
+
 </style>
  
  
@@ -647,7 +668,7 @@ ol.notes li:before {
 {/block:IndexPage}
 
 </div><!---content div--->
-
+<div id="x"><a href="http://mechanise.tumblr.com" title="theme credit">M</a></div>
 </body>
  
 </html>
