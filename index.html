@@ -83,7 +83,7 @@
     max-width:300px;
     padding:3px 4px 5px 4px; 
     margin:20px 7px -2px 20px;
-    background-color:{color:Background};
+    background-color: {color:Background};
     border:1px solid {color:Text}; 
     font-family:'karla'; 
     font-size:0.8rem; 
@@ -195,6 +195,17 @@ code {
     {block:PermalinkPage}
         width: 500px;
     {/block:PermalinkPage}
+    {block:IndexPage}
+        {block:If250px} /* post widths */
+            width: 250px;
+        {/block:If250px}
+        {block:If400px}
+             width: 400px;
+        {/block:If400px}
+        {block:If500px}
+            width: 500px;
+        {/block:If500px}
+    {/block:IndexPage}
     position: relative;
     margin-left: 40rem;
     margin-top: 10rem;
@@ -202,15 +213,15 @@ code {
 .entry { /* for individual posts */
     margin-top:10rem;
     margin-bottom: 10rem;
-    {block:if250px} /* post widths */
+    {block:If250px} /* post widths */
         width: 250px;
-    {/block:if250px}
-    {block:if400px}
+    {/block:If250px}
+    {block:If400px}
          width: 400px;
-    {/block:if400px}
-    {block:if500px}
+    {/block:If400px}
+    {block:If500px}
         width: 500px;
-    {/block:if500px}
+    {/block:If500px}
 }
 
 .entry img {
@@ -238,13 +249,29 @@ code {
     position: relative;
     height: 2px;
     width: 5rem;
-    left: calc(200px - 2.5rem);
+    {block:If250px} /* post widths */
+        left: calc(125px - 2.5rem);
+    {/block:If250px}
+    {block:If400px}
+         left: calc(200px - 2.5rem);
+    {/block:If400px}
+    {block:If500px}
+        left: calc(250px - 2.5rem);
+    {/block:If500px}
     border-bottom: 2px solid {color:Sidebar Link Border};
     margin-bottom: 1rem;
 }
 
 .bottom {
-    width:400px;
+    {block:If250px} /* post widths */
+        width: 250px;
+    {/block:If250px}
+    {block:If400px}
+         width: 400px;
+    {/block:If400px}
+    {block:If500px}
+        width: 500px;
+    {/block:If500px}
     border-top: 2px solid {color:Light Accents};
     padding-top: 1.3rem;
     margin-top: 2rem;
@@ -401,7 +428,15 @@ ol.notes {
     font-size: 1.3rem;
     padding: 20px;
     max-height: 35px;
-    width: 305px;
+    {block:If250px} /* post widths */
+        width: 155px;
+    {/block:If250px}
+    {block:If400px}
+         width: 305px;
+    {/block:If400px}
+    {block:If500px}
+        width: 385px;
+    {/block:If500px}
     margin-top: 0px;
     margin-left: 75px;
     text-align: left;
@@ -410,14 +445,30 @@ ol.notes {
 #pagination {
     padding:0.5rem;
     margin-bottom:1.5rem;
-    width:400px;
+    {block:If250px} /* post widths */
+        width: 250px;
+    {/block:If250px}
+    {block:If400px}
+         width: 400px;
+    {/block:If400px}
+    {block:If500px}
+        width: 500px;
+    {/block:If500px}
     text-align:right;
     text-transform:uppercase;
 }
 
 
 ol.notes {
-    width:400px;
+    {block:If250px} /* post widths */
+        width: 250px;
+    {/block:If250px}
+    {block:If400px}
+         width: 400px;
+    {/block:If400px}
+    {block:If500px}
+        width: 500px;
+    {/block:If500px}
     list-style-type:none;
     text-align:left;
 }
@@ -475,12 +526,14 @@ ol.notes li:before {
 {/block:Photo}
  
 {block:Photoset}
-    {block:IndexPage}{block:if250px}{Photoset-250}{/block:if250px}{block:if400px}{Photoset-400}{/block:if400px}{block:if500px}{Photoset-500}{/block:if500px}{/block:IndexPage}
-    {block:PermalinkPage}{Photoset-400}{/block:PermalinkPage} 
+    {block:IndexPage}
+        {block:If250px}{Photoset-250}{/block:If250px}
+        {block:If400px}{Photoset-400}{/block:If400px}
+        {block:If500px}{Photoset-500}{/block:If500px}
+    {/block:IndexPage}
+    {block:PermalinkPage}{Photoset-500}{/block:PermalinkPage} 
     
-    {block:IndexPage}<div class="caption">{block:Caption}{Caption}{/block:Caption}</div>{/block:IndexPage}
-    {block:PermalinkPage}
-    <div class="caption">{block:Caption}{Caption}{/block:Caption}</div>{/block:PermalinkPage}
+    <div class="caption">{block:Caption}{Caption}{/block:Caption}</div>
 {/block:Photoset}
  
 {block:Text}{block:Title}<h1>{Title}</h1>{/block:Title}{Body} {/block:Text}
@@ -527,7 +580,7 @@ ol.notes li:before {
 
 
  
-{block:Video}{block:IndexPage}{block:if250px}{Video-250}{/block:if250px}{block:if400px}{Video-400}{/block:if400px}{block:if500px}{Video-500}{/block:if500px}{/block:IndexPage}{block:PermalinkPage}{Video-400}{/block:PermalinkPage} 
+{block:Video}{block:IndexPage}{block:If250px}{Video-250}{/block:If250px}{block:If400px}{Video-400}{/block:If400px}{block:If500px}{Video-500}{/block:If500px}{/block:IndexPage}{block:PermalinkPage}{Video-400}{/block:PermalinkPage} 
 {block:IndexPage}
 <div class="caption">{block:Caption}{Caption}{/block:Caption}</div>
 {/block:IndexPage}
