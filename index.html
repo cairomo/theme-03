@@ -43,6 +43,9 @@
  <meta name="text:Link 5" content="link 5"/>
  <meta name="text:Link 5 url" content="/"/>
  
+ 
+ <meta name="if:show tags" content="1"/>
+ <meta name="if:show captions" content="1"/>
  <!--post width options-->
  <meta name="if:250px" content="0"/>
  <meta name="if:400px" content="0"/>
@@ -547,7 +550,7 @@ ol.notes li:before {
 <a class="photo" href="{permalink}">
     <img src="{PhotoURL-HighRes}" title="{PhotoAlt}" width="100%"/>
 </a>
-<div class="caption">{block:Caption}{Caption}{/block:Caption}</div>
+<div class="caption">{block:IfShowCaptions}{block:Caption}{Caption}{/block:Caption}{/block:IfShowCaptions}</div>
 {/block:Photo}
  
 {block:Photoset}
@@ -562,7 +565,7 @@ ol.notes li:before {
     {/block:IndexPage}
     {block:PermalinkPage}{Photoset-500}{/block:PermalinkPage} 
     
-    <div class="caption">{block:Caption}{Caption}{/block:Caption}</div>
+<div class="caption">{block:IfShowCaptions}{block:Caption}{Caption}{/block:Caption}{/block:IfShowCaptions}</div>
 {/block:Photoset}
  
 {block:Text}{block:Title}<h1>{Title}</h1>{/block:Title}{Body} {/block:Text}
@@ -601,21 +604,16 @@ ol.notes li:before {
     <br>
 {block:Artist}{Artist}{/block:Artist}<br><br>
 </div>
- 
-{block:Caption}
-    <div class="caption">{Caption}</span>
-{/block:Caption}
+<div class="caption">{block:IfShowCaptions}{block:Caption}{Caption}{/block:Caption}{/block:IfShowCaptions}</div>
 {/block:Audio}
 
 
  
 {block:Video}{block:IndexPage}{block:If250px}{Video-250}{/block:If250px}{block:If400px}{Video-400}{/block:If400px}{block:If500px}{Video-500}{/block:If500px}{/block:IndexPage}{block:PermalinkPage}{Video-400}{/block:PermalinkPage} 
 {block:IndexPage}
-<div class="caption">{block:Caption}{Caption}{/block:Caption}</div>
+    <div class="caption">{block:IfShowCaptions}{block:Caption}{Caption}{/block:Caption}{/block:IfShowCaptions}</div>
 {/block:IndexPage}
-{block:PermalinkPage}
-<div class="caption">{block:Caption}{Caption}{/block:Caption}</div>
-{/block:PermalinkPage}{block:Video}
+{block:Video}
  
 {block:Answer}
 <div class="question">{Question}</div>
@@ -627,9 +625,11 @@ ol.notes li:before {
  {block:IndexPage}
  <div class="bottom">
 <center>
+{block:IfShowTags}
     {block:HasTags}
         {block:Tags}<div class="tags"><a href="{TagURL}">#{Tag}</a></div>{/block:Tags}
     {/block:HasTags}
+{/block:IfShowTags}
     <p><div class="info"><a href="{Permalink}">{block:NoteCount}{NoteCount}♡{/block:NoteCount}</a></div>
 </center>
 </div>
@@ -639,9 +639,11 @@ ol.notes li:before {
 {block:PermalinkPage}
 <div class="bottom">
 <center>
+{block:IfShowTags}
     {block:HasTags}
         {block:Tags}<a href="{TagURL}"><div class="tags">#{Tag}</div></a>{/block:Tags}
     {/block:HasTags}
+{/block:IfShowTags}
     <p><div class="info"><a href="{Permalink}">{block:NoteCount}{NoteCount}♡{/block:NoteCount}</a> <a href="{ReblogParentURL}" title="{ReblogParentName}">{block:RebloggedFrom}via{/block:RebloggedFrom}</a>  <a href="{SourceURL}" title="{SourceTitle}">{block:ContentSource}©{/block:ContentSource}</a></div>
 </center>
 </div>
